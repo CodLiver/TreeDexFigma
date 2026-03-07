@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .geometric-pattern {
+    background-image: radial-gradient(#d4c5a0 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
