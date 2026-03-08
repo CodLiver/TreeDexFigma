@@ -4,13 +4,27 @@ import { DancerPortrait } from './components/DancerPortrait';
 import { HomePage } from './pages/HomePage';
 import { ScenesPage } from './pages/ScenesPage';
 import { BandsPage } from './pages/BandsPage';
+import { TeachersPage } from './pages/TeachersPage';
+import { LiteraturePage } from './pages/BookPage';
 import { DonatePage } from './pages/DonatePage';
-import { PartnersPage } from './pages/PartnersPage';
+
+import leonjames from "./data/imgs/lj.png";
+import normamiller from "./data/imgs/norma.jpeg";
+import buckbubbles from "./data/imgs/buckNbubbles.jpg";
+import manning from "./data/imgs/sepia-manning.png";
+
+// cd treeDexFrontEnd
+// yarn build
+// yarn dev
 
 const dancerImages = [
-  'https://images.unsplash.com/photo-1574091103551-3234913b977a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwc3dpbmclMjBkYW5jZXJzJTIwMTk0MHN8ZW58MXx8fHwxNzY3NDU2OTIwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-  'https://images.unsplash.com/photo-1574091101646-af65f2e8ea64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqYXp6JTIwZGFuY2VyJTIwdmludGFnZSUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NzQ1NjkyMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-  'https://images.unsplash.com/photo-1574091101798-a51d50ed3d0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwxOTQwcyUyMGNvdXBsZSUyMGRhbmNpbmd8ZW58MXx8fHwxNzY3NDU2OTIxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+    leonjames,
+    normamiller,
+    buckbubbles,
+    manning
+//   'https://images.unsplash.com/photo-1574091103551-3234913b977a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwc3dpbmclMjBkYW5jZXJzJTIwMTk0MHN8ZW58MXx8fHwxNzY3NDU2OTIwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+//   'https://images.unsplash.com/photo-1574091101646-af65f2e8ea64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqYXp6JTIwZGFuY2VyJTIwdmludGFnZSUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NzQ1NjkyMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
+//   'https://images.unsplash.com/photo-1574091101798-a51d50ed3d0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwxOTQwcyUyMGNvdXBsZSUyMGRhbmNpbmd8ZW58MXx8fHwxNzY3NDU2OTIxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
 ];
 
 export default function App() {
@@ -24,10 +38,12 @@ export default function App() {
         return <ScenesPage />;
       case 'bands':
         return <BandsPage />;
+      case 'teachers':
+        return <TeachersPage />;
+      case 'books':
+        return <LiteraturePage />;
       case 'donate':
         return <DonatePage />;
-      case 'partners':
-        return <PartnersPage />;
       default:
         return <HomePage />;
     }
@@ -63,7 +79,7 @@ export default function App() {
               alt="1940s couple dancing"
             />
             <DancerPortrait
-              imageUrl={dancerImages[0]}
+              imageUrl={dancerImages[3]}
               alt="Swing dance couple"
             />
           </aside>

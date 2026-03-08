@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { SearchBar } from '../components/SearchBar';
-import { bands } from '../data/mockData';
+import { bands } from '../data/scene_data/bands_data';
 
 export function BandsPage() {
   const [search, setSearch] = useState('');
@@ -29,7 +29,7 @@ export function BandsPage() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 border-2 border-[#d4c5a0]">
-        <h1 className="text-center mb-6 text-[#5a4a3a]">Swing Bands</h1>
+        <h1 className="text-center mb-6 text-[#5a4a3a] text-3xl font-bold">Swing Bands</h1>
         
         <SearchBar 
           value={search} 

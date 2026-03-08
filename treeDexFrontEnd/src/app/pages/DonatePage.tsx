@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Instagram } from 'lucide-react';
 import { SearchBar } from '../components/SearchBar';
-import { donateOrganizations } from '../data/mockData';
+import { donateOrganizations } from '../data/general_data';
 
 export function DonatePage() {
   const [search, setSearch] = useState('');
@@ -14,7 +14,7 @@ export function DonatePage() {
   return (
     <div className="max-w-5xl mx-auto">
       <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-6 sm:p-8 lg:p-10 border-2 border-[#d4c5a0]">
-        <h1 className="text-center mb-2 text-[#5a4a3a]">Support Our Causes</h1>
+        <h1 className="text-center mb-6 text-[#5a4a3a] text-3xl font-bold">Support Our Cause</h1>
         <p className="text-center text-[#8b7355] mb-8">Your generosity can make a real difference in the lives of many.</p>
         
         <SearchBar 

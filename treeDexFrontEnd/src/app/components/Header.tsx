@@ -13,8 +13,9 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
     { name: 'SwingDex', id: 'home' },
     { name: 'Scenes', id: 'scenes' },
     { name: 'Bands', id: 'bands' },
+    { name: 'Teachers', id: 'teachers' },
+    { name: 'Books', id: 'books' },
     { name: 'Donate', id: 'donate' },
-    { name: 'Partners', id: 'partners' },
   ];
 
   const handleNavigate = (pageId: string) => {
