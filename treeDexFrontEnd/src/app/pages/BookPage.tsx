@@ -13,7 +13,6 @@ export function LiteraturePage() {
     );
   }, [search]);
 
-  // Group books by the 'letter' property provided in the data
   const booksByLetter = useMemo(() => {
     const grouped: Record<string, Book[]> = {};
     filteredBooks.forEach(book => {
@@ -49,18 +48,23 @@ export function LiteraturePage() {
                 <div className="h-px bg-[#d4c5a0] flex-1"></div>
               </div>
 
-              {/* Books Grid */}
-              <div className="grid gap-3 sm:pl-12">
+              {/* Books Grid - Two Columns for balanced weight */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:pl-13">
                 {booksByLetter[letter].map((book, index) => (
                   <div
                     key={index}
-                    className="p-4 bg-white border border-[#d4c5a0] rounded-lg shadow-sm hover:border-[#8b7355] transition-all"
+                    className="flex flex-col p-4 bg-white border border-[#d4c5a0] rounded-lg shadow-sm hover:bg-[#faf8f3] hover:border-[#8b7355] transition-all group"
                   >
-                    <div className="text-lg font-semibold text-[#5a4a3a]">
+                    <div className="text-[#5a4a3a] font-bold leading-tight group-hover:text-[#8b7355] transition-colors">
                       {book.name}
                     </div>
-                    <div className="text-[#8b7355] italic text-sm mt-1">
-                      {book.desc}
+
+                    {/* Consistent footer styling to match Bands/Teachers */}
+                    <div className="text-[#8b7355] text-xs mt-3 pt-2 border-t border-[#f0ede4] flex justify-between items-center opacity-70 group-hover:opacity-100 transition-opacity">
+                      <span className="italic font-medium">{book.desc}</span>
+                      <span className="text-[10px] uppercase tracking-widest font-bold opacity-50">
+                        Reference
+                      </span>
                     </div>
                   </div>
                 ))}
@@ -71,7 +75,7 @@ export function LiteraturePage() {
 
         {filteredBooks.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-[#8b7355] text-lg">No books found matching "{search}"</p>
+            <p className="text-[#8b7355] text-lg font-medium">No books found matching "{search}"</p>
           </div>
         )}
       </div>
