@@ -29,6 +29,7 @@ export function LiteraturePage() {
       title="Swing & Jazz Literature"
       subtitle="Essential reading, historical archives, and dance biographies."
       data={formattedData}
+      availableTags={['History', 'Biography', 'Technique', 'Reference']}
     />
   );
 }

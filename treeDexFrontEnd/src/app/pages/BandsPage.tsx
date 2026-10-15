@@ -31,6 +31,7 @@ export function BandsPage() {
       title="Swing Bands & Orchestras"
       subtitle="Live big bands, hot jazz ensembles, and swing combos performing globally."
       data={formattedData}
+      availableTags={['Big Band', 'Hot Jazz', 'Small Combo', 'Orchestra']}
     />
   );
 }

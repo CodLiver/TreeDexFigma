@@ -1,31 +1,11 @@
 import { useState } from 'react';
 import { Header } from './components/Header';
-import { DancerPortrait } from './components/DancerPortrait';
 import { HomePage } from './pages/HomePage';
 import { ScenesPage } from './pages/ScenesPage';
 import { BandsPage } from './pages/BandsPage';
 import { TeachersPage } from './pages/TeachersPage';
 import { LiteraturePage } from './pages/BookPage';
 import { DonatePage } from './pages/DonatePage';
-
-import leonjames from "./data/imgs/lj.png";
-import normamiller from "./data/imgs/norma.jpeg";
-import buckbubbles from "./data/imgs/buckNbubbles.jpg";
-import manning from "./data/imgs/sepia-manning.png";
-
-// cd treeDexFrontEnd
-// yarn build
-// yarn dev
-
-const dancerImages = [
-    leonjames,
-    normamiller,
-    buckbubbles,
-    manning
-//   'https://images.unsplash.com/photo-1574091103551-3234913b977a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx2aW50YWdlJTIwc3dpbmclMjBkYW5jZXJzJTIwMTk0MHN8ZW58MXx8fHwxNzY3NDU2OTIwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-//   'https://images.unsplash.com/photo-1574091101646-af65f2e8ea64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxqYXp6JTIwZGFuY2VyJTIwdmludGFnZSUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NzQ1NjkyMXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-//   'https://images.unsplash.com/photo-1574091101798-a51d50ed3d0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwxOTQwcyUyMGNvdXBsZSUyMGRhbmNpbmd8ZW58MXx8fHwxNzY3NDU2OTIxfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-];
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -50,56 +30,25 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#ebe6dc] geometric-pattern">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#1E1915] font-sans antialiased flex flex-col selection:bg-[#EAE4D9] selection:text-[#1E1915]">
+      {/* Top Header */}
       <Header currentPage={currentPage} onNavigate={setCurrentPage} />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left Sidebar - Hidden on mobile */}
-          <aside className="hidden lg:block lg:col-span-2 space-y-6">
-            <DancerPortrait
-              imageUrl={dancerImages[0]}
-              alt="Vintage swing dancers"
-            />
-            <DancerPortrait
-              imageUrl={dancerImages[1]}
-              alt="Jazz dancer portrait"
-            />
-          </aside>
-
-          {/* Main Content */}
-          <section className="lg:col-span-8">
-            {renderPage()}
-          </section>
-
-          {/* Right Sidebar - Hidden on mobile */}
-          <aside className="hidden lg:block lg:col-span-2 space-y-6">
-            <DancerPortrait
-              imageUrl={dancerImages[2]}
-              alt="1940s couple dancing"
-            />
-            <DancerPortrait
-              imageUrl={dancerImages[3]}
-              alt="Swing dance couple"
-            />
-          </aside>
-        </div>
-
-        {/* Mobile Portrait Gallery - Visible only on mobile */}
-        <div className="lg:hidden mt-8 grid grid-cols-2 gap-4">
-          {dancerImages.map((img, index) => (
-            <DancerPortrait
-              key={index}
-              imageUrl={img}
-              alt={`Swing dancer ${index + 1}`}
-            />
-          ))}
-        </div>
+      {/* Main Content Area - Full Width Container */}
+      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        {renderPage()}
       </main>
 
       {/* Footer */}
-      <footer className="mt-12 py-6 text-center text-[#5a4a3a] bg-white/60">
-        <p>© 2026 SwingDex - Your Gateway to Swing Dance Resources</p>
+      <footer className="mt-auto border-t border-[#EAE4D9] bg-white/60 backdrop-blur-xs py-8 text-center text-xs font-medium text-[#786C5E]">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="font-serif font-bold text-sm text-[#1E1915]">SwingDex</span>
+            <span className="text-[#A3988A]">•</span>
+            <span>The Open Swing Dance Archive</span>
+          </div>
+          <p>© 2026 SwingDex. Built for the global swing dance community.</p>
+        </div>
       </footer>
     </div>
   );

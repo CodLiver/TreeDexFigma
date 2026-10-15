@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Menu, X, Disc3, Heart } from 'lucide-react';
+import { Menu, X, Disc3, Heart, Sparkles } from 'lucide-react';
 
 interface HeaderProps {
   currentPage: string;
@@ -24,30 +24,30 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#fdfbf7]/90 backdrop-blur-md border-b border-[#d4c5a0]/80 shadow-xs">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
 
           {/* Logo Badge */}
           <button
             onClick={() => handleNavigate('home')}
-            className="flex items-center gap-2.5 group focus:outline-none"
+            className="flex items-center gap-3 group focus:outline-none"
           >
-            <div className="w-8 h-8 rounded-full bg-[#5a4a3a] text-[#fdfbf7] flex items-center justify-center shadow-xs group-hover:bg-[#8b7355] transition-colors">
-              <Disc3 size={18} className="animate-spin-slow" />
+            <div className="w-9 h-9 rounded-xl bg-slate-900 text-white flex items-center justify-center shadow-md group-hover:bg-indigo-600 transition-colors">
+              <Disc3 size={20} className="text-indigo-400 group-hover:text-white transition-colors" />
             </div>
             <div className="flex flex-col text-left">
-              <span className="font-serif font-bold text-lg text-[#2c221e] leading-none group-hover:text-[#8b7355] transition-colors">
+              <span className="font-serif font-bold text-lg text-slate-900 leading-none group-hover:text-indigo-600 transition-colors">
                 SwingDex
               </span>
-              <span className="text-[10px] tracking-wider uppercase text-[#8b7355] font-semibold">
-                Swing Archive
+              <span className="text-[10px] tracking-widest uppercase text-slate-500 font-semibold mt-0.5">
+                Swing Dance Wiki
               </span>
             </div>
           </button>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1.5 bg-slate-100/70 p-1.5 rounded-xl border border-slate-200/60">
             {menuItems.map((item) => {
               const isActive = currentPage === item.id;
               const Icon = item.icon;
@@ -55,17 +55,14 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                 <button
                   key={item.id}
                   onClick={() => handleNavigate(item.id)}
-                  className={`relative px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${
+                  className={`px-4 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 ${
                     isActive
-                      ? 'text-[#2c221e] font-bold bg-[#f2ebd9] shadow-2xs'
-                      : 'text-[#735c40] hover:text-[#2c221e] hover:bg-[#f2ebd9]/50'
+                      ? 'bg-white text-slate-900 shadow-sm border border-slate-200/80'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-white/50'
                   }`}
                 >
-                  {Icon && <Icon size={14} className={isActive ? 'text-red-600' : 'text-[#8b7355]'} />}
+                  {Icon && <Icon size={14} className={isActive ? 'text-rose-500' : 'text-slate-400'} />}
                   {item.name}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#8b7355] rounded-full" />
-                  )}
                 </button>
               );
             })}
@@ -74,7 +71,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-[#5a4a3a] hover:bg-[#f2ebd9] transition-colors"
+            className="md:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -83,7 +80,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-3 border-t border-[#d4c5a0]/60 space-y-1 animate-in fade-in slide-in-from-top-2">
+          <nav className="md:hidden py-3 border-t border-slate-200 space-y-1">
             {menuItems.map((item) => {
               const isActive = currentPage === item.id;
               const Icon = item.icon;
@@ -91,17 +88,17 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                 <button
                   key={item.id}
                   onClick={() => handleNavigate(item.id)}
-                  className={`flex items-center justify-between w-full px-4 py-2.5 rounded-lg text-left text-sm font-medium transition-colors ${
+                  className={`flex items-center justify-between w-full px-4 py-2.5 rounded-xl text-left text-sm font-semibold transition-colors ${
                     isActive
-                      ? 'bg-[#f2ebd9] text-[#2c221e] font-bold'
-                      : 'text-[#735c40] hover:bg-[#f2ebd9]/40'
+                      ? 'bg-indigo-50 text-indigo-600 font-bold'
+                      : 'text-slate-600 hover:bg-slate-50'
                   }`}
                 >
                   <span className="flex items-center gap-2">
-                    {Icon && <Icon size={15} className="text-red-600" />}
+                    {Icon && <Icon size={15} className="text-rose-500" />}
                     {item.name}
                   </span>
-                  {isActive && <div className="w-1.5 h-1.5 rounded-full bg-[#8b7355]" />}
+                  {isActive && <div className="w-2 h-2 rounded-full bg-indigo-600" />}
                 </button>
               );
             })}
