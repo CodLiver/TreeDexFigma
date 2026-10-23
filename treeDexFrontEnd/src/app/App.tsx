@@ -18,8 +18,8 @@ export default function App() {
         return <ScenesPage />;
       case 'bands':
         return <BandsPage />;
-      case 'teachers':
-        return <TeachersPage />;
+//       case 'teachers':
+//         return <TeachersPage />;
       case 'books':
         return <LiteraturePage />;
       case 'donate':

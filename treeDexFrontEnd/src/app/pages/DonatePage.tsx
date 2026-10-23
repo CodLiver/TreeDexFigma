@@ -6,10 +6,14 @@ import { donateOrganizations } from '../data/general_data';
 export function DonatePage() {
   const [search, setSearch] = useState('');
 
+  const term = search.toLowerCase().trim();
+
+  // Safe search across name, instagram, and url
   const filteredOrganizations = donateOrganizations.filter(
     (org) =>
-      org.name.toLowerCase().includes(search.toLowerCase()) ||
-      org.instagram.toLowerCase().includes(search.toLowerCase())
+      org.name?.toLowerCase().includes(term) ||
+      org.instagram?.toLowerCase().includes(term) ||
+      org.url?.toLowerCase().includes(term)
   );
 
   return (
@@ -54,6 +58,7 @@ export function DonatePage() {
                   </div>
                 </div>
 
+                {/* Safe Instagram Badge */}
                 {org.instagram && (
                   <a
                     href={`https://instagram.com/${org.instagram.replace('@', '')}`}
@@ -67,17 +72,22 @@ export function DonatePage() {
                 )}
               </div>
 
+              {/* Safe URL Button */}
               <div className="mt-6 pt-4 border-t border-[#EAE4D9] flex items-center justify-between">
                 <span className="text-xs font-medium text-[#786C5E]">Official Foundation</span>
-                <a
-                  href={org.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2D2621] text-[#FAF7F2] text-xs font-semibold hover:bg-[#1E1915] transition-colors shadow-2xs"
-                >
-                  <span>Donate / Visit</span>
-                  <ExternalLink size={13} />
-                </a>
+                {org.url ? (
+                  <a
+                    href={org.url.startsWith('http') ? org.url : `https://${org.url}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2D2621] text-[#FAF7F2] text-xs font-semibold hover:bg-[#1E1915] transition-colors shadow-2xs"
+                  >
+                    <span>Donate / Visit</span>
+                    <ExternalLink size={13} />
+                  </a>
+                ) : (
+                  <span className="text-xs text-[#786C5E] italic">No website available</span>
+                )}
               </div>
             </div>
           ))}
